@@ -11,6 +11,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        right: false,
+        left: false,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 22, 16, 10),
           child: Column(

@@ -29,6 +29,8 @@ class _HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        right: false,
+        left: false,
 
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
