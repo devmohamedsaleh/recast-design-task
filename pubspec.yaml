@@ -1,0 +1,46 @@
+name: recastdesign
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  flutter_bloc: ^9.1.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Satoshi
+      fonts:
+        - asset: assets/fonts/satoshi/Satoshi-Light.otf
+          weight: 300
+        - asset: assets/fonts/satoshi/Satoshi-Regular.otf
+          weight: 400
+        - asset: assets/fonts/satoshi/Satoshi-Medium.otf
+          weight: 500
+        - asset: assets/fonts/satoshi/Satoshi-Bold.otf
+          weight: 700
+        - asset: assets/fonts/satoshi/Satoshi-Black.otf
+          weight: 900
+
