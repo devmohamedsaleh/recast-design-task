@@ -24,6 +24,8 @@ lib/
 │   └── profile/
 └── widgets/
 
-![image_alt](https://github.com/devmohamedsaleh/recast-design-task/blob/46906bb54e60a7f85c192c85d67eb8e2c3148bfd/screenshots/home_android.png)
+![Home Android](screenshots/home_android.png)
+![Home Laptop](screenshots/home_labtop.png)
+![Profile iPhone](screenshots/profile_iphone.png)
 
 
