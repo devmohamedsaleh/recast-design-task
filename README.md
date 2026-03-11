@@ -11,7 +11,11 @@ The goal of this project is to recreate the given design with clean, maintainabl
 - State management using Cubit
 - Clear separation of concerns
 - Responsive layout practices
-
+<p align="center">
+  <img src="screenshots/home_android.png" width="250"/>
+  <img src="screenshots/home_labtop.png" width="250"/>
+  <img src="screenshots/profile_iphone.png" width="250"/>
+</p>
 ## Project Structure
 
 ```bash
@@ -24,8 +28,6 @@ lib/
 │   └── profile/
 └── widgets/
 
-![Home Android](screenshots/home_android.png)
-![Home Laptop](screenshots/home_labtop.png)
-![Profile iPhone](screenshots/profile_iphone.png)
+
 
 
