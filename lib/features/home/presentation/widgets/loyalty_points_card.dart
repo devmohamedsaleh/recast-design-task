@@ -17,7 +17,7 @@ class LoyaltyPointsCard extends StatelessWidget {
     final int loyaltyPoints = user.loyaltyPoints ?? 21750;
     final int totalOrders = user.totalOrders ?? 24;
 
-    // غير الرقم ده حسب نظامك
+
     const int maxPoints = 30000;
 
     final double progress = (loyaltyPoints / maxPoints).clamp(0.0, 1.0);
