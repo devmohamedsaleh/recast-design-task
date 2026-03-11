@@ -216,7 +216,7 @@ class _FoodAvatar extends StatelessWidget {
       width: 24,
       height: 24,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
+        borderRadius: BorderRadius.circular(7),
         border: Border.all(color: Colors.black, width: 1),
         image: const DecorationImage(
           image: AssetImage('assets/images/food.png'),
