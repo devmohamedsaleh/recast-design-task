@@ -14,6 +14,14 @@ class LoyaltyPointsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int loyaltyPoints = user.loyaltyPoints ?? 21750;
+    final int totalOrders = user.totalOrders ?? 24;
+
+    // غير الرقم ده حسب نظامك
+    const int maxPoints = 30000;
+
+    final double progress = (loyaltyPoints / maxPoints).clamp(0.0, 1.0);
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 14),
@@ -50,53 +58,73 @@ class LoyaltyPointsCard extends StatelessWidget {
                   ],
                 ),
               ),
-               Image.asset("assets/images/user.png",width: 19,height: 19,),
+              Image.asset(
+                "assets/images/user.png",
+                width: 19,
+                height: 19,
+              ),
             ],
           ),
           const SizedBox(height: 10),
           ShaderMask(
-            shaderCallback: (bounds) =>  LinearGradient(
+            shaderCallback: (bounds) => const LinearGradient(
               colors: [
                 AppColors.goldGradiant,
-                AppColors.lightGoldGradiant
+                AppColors.lightGoldGradiant,
               ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ).createShader(bounds),
-            child:  Text(
-              "21,750",
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.white
+            child: Text(
+              loyaltyPoints.toString().replaceAllMapped(
+                RegExp(r'\B(?=(\d{3})+(?!\d))'),
+                    (match) => ',',
+              ),
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                color: AppColors.white,
               ),
             ),
           ),
           const SizedBox(height: 12),
-          Container(
-            height: 22,
-            decoration: BoxDecoration(
+
+          // Animated Dynamic Progress Bar
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Container(
+              height: 22,
+              width: double.infinity,
               color: Colors.black,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.47,
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [
-                      AppColors.goldGradiant,
-                      AppColors.lightGoldGradiant
-                    ],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                  borderRadius: BorderRadius.circular(30),
-                ),
+              child: TweenAnimationBuilder<double>(
+                tween: Tween<double>(begin: 0, end: progress),
+                duration: const Duration(milliseconds: 1200),
+                curve: Curves.easeInOut,
+                builder: (context, value, child) {
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: FractionallySizedBox(
+                      widthFactor: value,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              AppColors.goldGradiant,
+                              AppColors.lightGoldGradiant,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ),
+
           const SizedBox(height: 14),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -106,8 +134,8 @@ class LoyaltyPointsCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Total Orders',
                           style: TextStyle(
                             color: AppColors.textGrey,
@@ -115,10 +143,10 @@ class LoyaltyPointsCard extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(width: 6),
+                        const SizedBox(width: 6),
                         Text(
-                          '24',
-                          style: TextStyle(
+                          '$totalOrders',
+                          style: const TextStyle(
                             color: AppColors.gold,
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
